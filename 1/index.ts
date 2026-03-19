@@ -1,99 +1,119 @@
 // ============================================
 // PROYECTO SEMANAL: MODELADO DE ENTIDADES
+// DOMINIO: BANCO
 // ============================================
 
-console.log('🏛️ PROYECTO SEMANAL: MODELADO DE ENTIDADES\n');
-
-// INSTRUCCIONES:
-// Adapta este archivo a tu dominio asignado (ej: biblioteca, farmacia, gimnasio, restaurante, etc.)
-// Implementa las entidades, tipos y funciones siguiendo los TODOs y comentarios.
-// Usa interfaces, types, type unions y literales. Comenta el código con qué/para/impacto.
-
 // ============================================
-// 1. Define las entidades principales de tu dominio
+// 1. Definición de entidades principales
 // ============================================
 
-interface Client {
-  id: number
-  name: string
-  email: string
-  status: AccountStatus
-}
+// QUÉ: Representa un cliente del banco
+// PARA: Guardar información básica del usuario
+// IMPACTO: Permite relacionar clientes con cuentas bancarias
+//interface Client {
+  //id: number
+  //name: string
+  //email: string
+  //status: AccountStatus
+//}
 
-
-interface BankAccount {
-  accountNumber: number
-  clientId: number
-  balance: number
-  type: AccountType
-  status: AccountStatus
-}
-
-
-// ============================================
-// 2. Usa type unions y literales para propiedades clave
-// ============================================
-
-type AccountStatus = 'active' | 'inactive' | 'blocked'
-
-type AccountType = 'ahorros' | 'corriente' | 'empresarial'
+// QUÉ: Representa una cuenta bancaria
+// PARA: Gestionar dinero, tipo de cuenta y estado
+// IMPACTO: Permite operaciones como crear, listar y filtrar cuentas
+//interface BankAccount {
+  //accountNumber: number
+  //clientId: number
+  //balance: number
+  //type: AccountType
+  //status: AccountStatus
+//}
 
 // ============================================
-// 3. Implementa funciones tipadas para operaciones básicas
-// ============================================
-const accounts: BankAccount[] = []
-
-function createAccount(
-  accountNumber: number,
-  clientId: number,
-  balance: number,
-  type: AccountType
-): BankAccount {
-      
-    const newAccount: BankAccount = {
-    accountNumber,
-    clientId,
-    balance,
-    type,
-    status: 'active'
-  }
-
-  accounts.push(newAccount)
-
-  return newAccount
-}
-
-function listAccounts(): BankAccount[] {
-  return accounts
-}
-
-function filterByStatus(status: AccountStatus): BankAccount[] {
-  return accounts.filter(account => account.status === status)
-}
-// ============================================
-// 4. Prueba tus funciones con datos de ejemplo
+// 2. Type unions y literales
 // ============================================
 
-createAccount(1001, 1, 5000, 'ahorros')
-createAccount(1002, 2, 12000, 'corriente')
-createAccount(1003, 3, 3000, 'empresarial')
+// QUÉ: Define los posibles estados de una cuenta
+// PARA: Evitar errores de valores inválidos
+// IMPACTO: Mejora la seguridad del sistema
+//type AccountStatus = 'active' | 'inactive' | 'blocked'
 
-accounts[1].status = 'inactive'
-console.log('📋 Lista de cuentas:')
-console.log(listAccounts())
-
-console.log('\n✅ Cuentas activas:')
-console.log(filterByStatus('active'))
-
-console.log('\n⛔ Cuentas inactivas:')
-console.log(filterByStatus('inactive'))
+// QUÉ: Define los tipos de cuentas disponibles
+// PARA: Clasificar las cuentas
+// IMPACTO: Permite lógica según el tipo de cuenta
+//type AccountType = 'ahorros' | 'corriente' | 'empresarial'
 
 // ============================================
-// 5. Comenta tu código explicando qué/para/impacto
+// 3. Funciones del sistema bancario
 // ============================================
 
-// QUÉ: ...
-// PARA: ...
-// IMPACTO: ...
+// Base de datos simulada en memoria
+//const accounts: BankAccount[] = []
 
-console.log('\n🚦 Recuerda: Adapta TODO a tu dominio y comenta tu código.');
+// QUÉ: Crear una nueva cuenta bancaria
+// PARA: Registrar nuevas cuentas en el sistema
+// IMPACTO: Permite crecer la base de clientes
+//function createAccount(
+  //accountNumber: number,
+  //clientId: number,
+  //balance: number,
+  //type: AccountType
+//): BankAccount {
+
+  //const newAccount: BankAccount = {
+    //accountNumber,
+    //clientId,
+    //balance,
+    //type,
+    //status: 'active'
+  //}
+
+  //accounts.push(newAccount)
+
+  //return newAccount
+//}
+
+// QUÉ: Listar todas las cuentas
+// PARA: Visualizar la información almacenada
+// IMPACTO: Facilita auditoría y control
+//function listAccounts(): BankAccount[] {
+  //return accounts
+//}
+
+// QUÉ: Filtrar cuentas por estado
+// PARA: Consultar cuentas activas, inactivas o bloqueadas
+// IMPACTO: Ayuda en gestión y toma de decisiones
+//function filterByStatus(status: AccountStatus): BankAccount[] {
+  //return accounts.filter(account => account.status === status)
+//}
+
+// ============================================
+// 4. Pruebas del sistema
+// ============================================
+
+// Creación de cuentas
+//createAccount(1001, 1, 5000, 'ahorros')
+//createAccount(1002, 2, 12000, 'corriente')
+//createAccount(1003, 3, 3000, 'empresarial')
+
+// Cambiar estado de una cuenta
+//accounts[1].status = 'inactive'
+
+// Mostrar resultados
+//console.log('📋 Lista de cuentas:')
+//console.log(listAccounts())
+
+//console.log('\n✅ Cuentas activas:')
+//console.log(filterByStatus('active'))
+
+//console.log('\n⛔ Cuentas inactivas:')
+//console.log(filterByStatus('inactive'))
+
+// ============================================
+// 5. Reflexión final
+// ============================================
+
+// QUÉ: Se modeló un sistema básico de cuentas bancarias usando TypeScript
+// PARA: Aplicar conceptos como interfaces, tipos y funciones tipadas
+// IMPACTO: Permite crear sistemas más seguros, escalables y fáciles de mantener
+
+//console.log('\n🚦 Sistema listo y funcionando correctamente');
